@@ -2,7 +2,7 @@ const board = document.getElementById("game-board");
 const instructionText = document.getElementById("instruction-text");
 const logo = document.getElementById("logo");
 const score = document.getElementById("score");
-const highScoreText = document.getElementById("high-score");
+const highScoreText = document.getElementById("highScore");
 
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
@@ -106,8 +106,8 @@ function generateFirstMove() {
 
 function startGame() {
   gameStarted = true;
-  // instructionText.style.display = "none";
-  // logo.style.display = "none";
+  instructionText.style.display = "none";
+  logo.style.display = "none";
   gameInterval = setInterval(() => {
     move();
     checkColission();
@@ -185,8 +185,8 @@ function updateScore() {
 function stopGame() {
   clearInterval(gameInterval);
   gameStarted = false;
-  // instructionText.style.display = "block";
-  // logo.style.display = "block";
+  instructionText.style.display = "block";
+  logo.style.display = "block";
 }
 
 function updateHighScore() {
@@ -197,35 +197,3 @@ function updateHighScore() {
   }
   highScoreText.style.display = "block";
 }
-
-// Info section
-
-let goToregister = document.querySelector("#go-to-register");
-let goToAuthDiv = document.querySelector("#go-to-auth");
-let infoSectionDiv = document.querySelector("#info-section");
-
-goToregister.addEventListener("click", () => {
-  infoSectionDiv.innerHTML = `
-  <h2>რეგისტრაცია</h2>
-   <form action="">
-      <label for="username">ჩაწერე იუზერი</label>
-      <input id="username" class="input-username" type="text" placeholder="username" required >
-      <label for="pass">ჩაწერე პაროლი</label>
-      <input id="pass" class="input-pass" type="password" placeholder="****" required >
-      <button class="submit-register">Submit</button>
-    </form>
-        `;
-});
-
-goToAuthDiv.addEventListener("click", () => {
-  infoSectionDiv.innerHTML = `
-    <h2>ავტორიზაცია</h2>
-     <form action="">
-      <label for="username">ჩაწერე იუზერი</label>
-      <input id="username" class="input-username" type="text" placeholder="username" required >
-      <label for="pass">ჩაწერე პაროლი</label>
-      <input id="pass" class="input-pass" type="password" placeholder="****" required >
-      <button class="submit-auth">Submit</button>
-    </form>
-  `;
-});
